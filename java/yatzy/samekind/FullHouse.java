@@ -8,7 +8,12 @@ public class FullHouse implements YatzyGame {
     private final YatzyGame threeOfAKind;
 
     public FullHouse(int d1, int d2, int d3, int d4, int d5) {
-        onePair = new OnePair(d1, d2, d3, d4, d5);
+        onePair = new SameKind(d1, d2, d3, d4, d5) {
+            @Override
+            protected Kind getKind() {
+                return Kind.DISCTINCT_ONE_PAIR;
+            }
+        };
         threeOfAKind = new ThreeOfAKind(d1, d2, d3, d4, d5);
     }
 

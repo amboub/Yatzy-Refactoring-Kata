@@ -21,6 +21,22 @@ enum Kind {
             return entry -> entry.getValue() >= multiplicator();
         }
     },
+    DISCTINCT_ONE_PAIR {
+        @Override
+        protected int multiplicator() {
+            return 2;
+        }
+
+        @Override
+        protected IntBinaryOperator reducer() {
+            return Integer::max;
+        }
+
+        @Override
+        public Predicate<Map.Entry<Integer, Long>> sameKindPredicate() {
+            return entry -> entry.getValue() == multiplicator();
+        }
+    },
     TWO_PAIRS {
         @Override
         protected int multiplicator() {
